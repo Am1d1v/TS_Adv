@@ -37,6 +37,8 @@ if(user) {
 
 // Type Conversion
 
+/*
+
 let a = 5;
 let b: string = a.toString();
 
@@ -77,3 +79,30 @@ function userToAdmin(user: User): Admin{
         role: 1
     }
 }
+
+*/
+
+// Type Guard
+
+interface User {
+    name: string;
+    email: string;
+    login: string
+}
+
+interface Admin {
+    role: number
+}
+
+function logId(id: string | number){
+    if(typeof id === 'string'){
+        console.log(id);   // String
+    } else {
+        console.log(id);   // Number
+    }
+}
+
+
+function isString(par: string | number): par is string{
+    return typeof par === 'string';
+}   

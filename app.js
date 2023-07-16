@@ -31,15 +31,48 @@ if(user) {
 
 */
 // Type Conversion
+/*
+
 let a = 5;
-let b = a.toString();
+let b: string = a.toString();
+
 let c = 'someString';
-let d = parseInt(c);
-let e = new String(a).valueOf();
-const user = {
+let d: number = parseInt(c);
+
+let e: string = new String(a).valueOf();
+
+
+
+interface User {
+    name: string;
+    email: string;
+    login: string;
+}
+
+const user: User = {
     name: 'Dima',
     email: 'someMail@mail.com',
     login: 'someLogin'
-};
-const admin = Object.assign(Object.assign({}, user), { role: 1 });
-console.log(admin);
+}
+
+interface Admin {
+    name: string;
+    role: number;
+}
+
+const admin: Admin = {
+    ...user,
+    role: 1
+}
+
+//console.log(admin);
+
+function userToAdmin(user: User): Admin{
+    return {
+        name: user.name,
+        role: 1
+    }
+}
+
+*/
+// Type Guard
