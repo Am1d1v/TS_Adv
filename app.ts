@@ -95,7 +95,7 @@ interface Admin {
 }
 
 function logId(id: string | number){
-    if(typeof id === 'string'){
+    if(isString(id)){
         console.log(id);   // String
     } else {
         console.log(id);   // Number
@@ -106,3 +106,18 @@ function logId(id: string | number){
 function isString(par: string | number): par is string{
     return typeof par === 'string';
 }   
+
+
+
+
+function isAdmin(user: User | Admin): user is Admin{
+    return 'role' in user;
+}
+
+function setRole(user: User | Admin){
+    if(isAdmin(user)){
+        user.role = 0;
+    } else {
+        throw new Error('User is not Admin');
+    }
+}
