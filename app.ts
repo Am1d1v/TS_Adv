@@ -84,6 +84,8 @@ function userToAdmin(user: User): Admin{
 
 // Type Guard
 
+/*
+
 interface User {
     name: string;
     email: string;
@@ -120,4 +122,26 @@ function setRole(user: User | Admin){
     } else {
         throw new Error('User is not Admin');
     }
+}
+
+*/
+
+// Asserts
+
+interface User {
+    name: string;
+}
+
+const a = {};
+assertUser(a);
+a.name = 'Dima';
+
+
+
+function assertUser(obj: unknown): asserts obj is User{
+    if (typeof obj === 'object' && !!obj && 'name' in obj){
+        return;
+    }
+
+    throw new Error('No user');
 }
